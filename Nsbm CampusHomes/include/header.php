@@ -12,7 +12,7 @@
                             <li class="nav-item dropdown"> <a class="nav-link" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li>
                              <!--  <li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li> -->
                              <?php if(isset($_SESSION['uemail'])) { ?>
-                                <?php if($_SESSION['uemail'] == "aviresh@123" && $_SESSION['upass'] == sha1("123")) { ?>
+                                <?php if($_SESSION['uemail'] == "wareden@123" && $_SESSION['upass'] == sha1("123")) { ?>
 
                                     <li class="nav-item"> <a class="nav-link" href="warden.php">Warden</a> </li>
                                 <?php }
@@ -22,11 +22,11 @@
                               <?php if(isset($_SESSION['uemail'])) { ?>
                                 <?php if($_SESSION['uemail'] == "admin@123" && $_SESSION['upass'] == sha1("123")) { ?>
 
-                                    <li class="nav-item"> <a class="nav-link" href="admin.php">Admin</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="Admin.php">Admin</a> </li>
                                 <?php }
                                 }
                                  ?>
-                            <li class="nav-item"> <a class="nav-link" href="contact.php">Contact</a> </li>
+                           
                             <li class="nav-item"> <a class="nav-link" href="property.php">Properties</a> </li>
 
                             <?php if(isset($_SESSION['uemail'])) { ?>
