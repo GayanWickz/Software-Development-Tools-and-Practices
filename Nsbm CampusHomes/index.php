@@ -3,7 +3,21 @@ ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-								
+		
+
+
+// Dynamically generate image list based on database query
+$imageListHtml = '';
+$sql = "SELECT file_path FROM advertisements"; // Assuming 'advertisements' is the name of your table
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $filePath = $row["file_path"];
+        $imageListHtml .= '<img class="image-item" src="' . $filePath . '" alt="' . basename($filePath) . '" />';
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +46,9 @@ include("config.php");
 <link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="advertisment-slider/style.css" />
+    <script src="advertisment-slider/script.js" defer></script>
 <title>NSBM CampusHomes</title>
 </head>
 <body>
@@ -44,7 +60,7 @@ include("config.php");
         
 		<?php include("include/header.php");?>
       
-	
+
         <div class="overlay-black w-100 slider-banner1 position-relative" style="background-image: url('images/R.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
@@ -53,6 +69,31 @@ include("config.php");
                             <span class="topic-1">Your Destination</span></h1>
                            
                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+          
+	
+        <div class="containerx">
+       
+                <!-- Image slider -->
+                <div class="slider-wrapper">
+                    <button id="prev-slide" class="slide-button material-symbols-rounded">
+                        chevron_left
+                    </button>
+                    <ul class="image-list">
+                        <!-- Dynamically generated image list -->
+                        <?php echo $imageListHtml; ?>
+                    </ul>
+                    <button id="next-slide" class="slide-button material-symbols-rounded">
+                        chevron_right
+                    </button>
+                </div>
+                <div class="slider-scrollbar">
+                    <div class="scrollbar-track">
+                        <div class="scrollbar-thumb"></div>
                     </div>
                 </div>
             </div>
@@ -114,14 +155,16 @@ include("config.php");
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                                 <div class="row">
 								
-									<?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
+									<?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid 
+                                    AND property.approval_status != 'pending' AND property.approval_status != 'rejected'
+                                    ORDER BY date DESC LIMIT 9");
 										while($row=mysqli_fetch_array($query))
 										{
 									?>
 								
                                     <div class="col-md-6 col-lg-4">
                                         <div class="featured-thumb hover-zoomer mb-4">
-                                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
+                                            <div class="overlay-black overflow-hidden position-relative" style="width: 100%; height: 200;"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                                 <div class="featured bg-success text-white">New</div>
                                                 <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
                                                 <div class="price text-primary"><b>$<?php echo $row['13'];?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
@@ -213,8 +256,9 @@ include("config.php");
 </div>
 
 
-<?php include("//footer.php");?>
-<!--	Js Link> 
+
+<!--	Js Link
+============================================================--> 
 <script src="js/jquery.min.js"></script> 
 
 <!--jQuery Layer Slider --> 
@@ -248,6 +292,15 @@ include("config.php");
 
 <script src="js/custom.js"></script>
 
+
+
+<script>
+        // Initialize slider after content is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            initSlider();
+        });
+    </script>
+<?php include("footer.php");?>
 </body>
 
 </html>
