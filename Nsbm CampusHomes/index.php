@@ -155,7 +155,7 @@ if ($result->num_rows > 0) {
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                                 <div class="row">
 								
-									<?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid 
+									<?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype FROM `property`,`user` WHERE property.uid=user.uid 
                                     AND property.approval_status != 'pending' AND property.approval_status != 'rejected'
                                     ORDER BY date DESC LIMIT 9");
 										while($row=mysqli_fetch_array($query))
