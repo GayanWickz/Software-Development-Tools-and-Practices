@@ -15,10 +15,8 @@ include("config.php");
 
 <!-- Meta Tags -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Real Estate PHP">
-<meta name="keywords" content="">
-<meta name="author" content="Unicoder">
-<link rel="shortcut icon" href="images/favicon.ico">
+
+
 
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
@@ -31,7 +29,7 @@ include("config.php");
 <link rel="stylesheet" type="text/css" href="css/color.css" id="color-change">
 <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
+
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 
@@ -62,6 +60,9 @@ include("config.php");
     margin-right: 10px; 
 }
 </style>
+
+
+
 </head>
 <body>
 
@@ -91,17 +92,20 @@ include "warden map/com.php";
             <div class="container">
                 <div class="row">
                     <?php 
-                    $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`, `user` WHERE property.uid=user.uid");
+                    $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype FROM `property`, `user` WHERE property.uid=user.uid");
                     while($row=mysqli_fetch_array($query))
                     {
                     ?>
                     <div class="col-md-6">
                         <div class="featured-thumb hover-zoomer mb-4">
-                            <div class="image-container">
+                            
+                        <div class="image-container">
                                 <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                 <div class="sale bg-success text-white">For <?php echo $row['4'];?></div>
-                                <div class="price text-primary text-capitalize">$<?php echo $row['8'];?> <span class="text-white"><?php echo $row['10'];?> Sqft</span></div>
+                                <div class="price text-primary text-capitalize">Rs.<?php echo $row['8'];?> <span class="text-white"><?php echo $row['10'];?> Sqft</span></div>
                             </div>
+
+
                             <div class="featured-thumb-data shadow-one">
                                 <div class="p-4">
                                     <h5 class="text-secondary hover-text-success mb-2 text-capitalize">
@@ -119,7 +123,7 @@ include "warden map/com.php";
                                         <input type="text" name="reason" placeholder="Reason (optional)" class="form-control mb-2">
                                         <button type="submit" name="accept" class="btn btn-success">Accept</button>
                                     </form>
-                                    <form action="reject_property.php" method="post">
+                                    <form action="warden_reject.php" method="post">
                                         <input type="hidden" name="pid" value="<?php echo $row['pid'];?>">
                                         <input type="text" name="reason" placeholder="Reason (optional)" class="form-control mb-2">
                                         <button type="submit" name="reject" class="btn btn-danger">Reject</button>
@@ -153,7 +157,7 @@ include "warden map/com.php";
 <script src="js/tmpl.js"></script> 
 <script src="js/jquery.dependClass-0.1.js"></script> 
 <script src="js/draggable-0.1.js"></script> 
-<script src="js/jquery.slider.js"></script> 
+
 <script src="js/wow.js"></script> 
 
 <script src="js/custom.js"></script>

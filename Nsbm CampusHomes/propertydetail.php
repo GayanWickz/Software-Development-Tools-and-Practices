@@ -90,8 +90,8 @@ include("config.php");
                                 <span class="mb-sm-20 d-block text-capitalize"><i class="fas fa-map-marker-alt text-success font-12"></i> &nbsp;<?php echo $row['10'];?></span>
 							</div>
                             <div class="col-md-6">
-                                <div class="text-success text-left h5 my-2 text-md-right">$<?php echo $row['8'];?></div>
-                                <div class="text-left text-md-right">Price</div>
+                                <div class="text-success text-left h1 my-2 text-md-right">Rs.<?php echo $row['8'];?></div>
+                                <div class="text-left h3 text-md-right">Price</div>
                             </div>
                         </div>
                         <div class="property-details">
@@ -100,9 +100,9 @@ include("config.php");
                                     
                                     <li><span class="text-secondary"><?php echo $row['6'];?></span> Bedroom</li>
                                     <li><span class="text-secondary"><?php echo $row['7'];?></span> Bathroom</li>
-                                    <li><span class="text-secondary"><?php echo $row['8'];?></span> Balcony</li>
-                                    <li><span class="text-secondary"><?php echo $row['10'];?></span> Hall</li>
-                                    <li><span class="text-secondary"><?php echo $row['9'];?></span> Kitchen</li>
+                                    <li><span class="text-secondary"><?php echo $row['7'];?></span> Kitchen</li>
+                                    <li><span class="text-secondary"><?php echo $row['10'];?></span> City</li>
+                                    <li><span class="text-secondary"><?php echo $row['9'];?></span> Address</li>
                                 </ul>
                             </div>
                             <h4 class="text-secondary my-4">Description</h4>
@@ -140,7 +140,7 @@ include("config.php");
                                  
                                  <div class="mt-4">
                                     Reservation Status: 
-                                 <span id="reservationStatus">Checking reservation status...</span>
+                                 <span id="reservationStatus" style="color: red;">Checking reservation status...</span>
                                 </div>
 
 
@@ -150,7 +150,7 @@ include("config.php");
                             <h5 class="mt-5 mb-4 text-secondary double-down-line-left position-relative">Contact Agent</h5>
                             <div class="agent-contact pt-60">
                                 <div class="row">
-                                    <div class="col-sm-4 col-lg-3"> <img src="admin/user/<?php echo $row['uimage']; ?>" alt="" height="200" width="170"> </div>
+                                 
                                     <div class="col-sm-8 col-lg-9">
                                         <div class="agent-data text-ordinary mt-sm-20">
                                             <h6 class="text-success text-capitalize"><?php echo $row['uname'];?></h6>
@@ -201,13 +201,15 @@ include "map for details page/com.php";
                         <ul class="property_list_widget">
 							
                             <?php 
-                            $query=mysqli_query($con,"SELECT * FROM `property` WHERE isFeatured = 1 ORDER BY date DESC LIMIT 3");
+                            $query=mysqli_query($con,"SELECT * FROM `property` WHERE isFeatured = 1 AND property.approval_status != 'pending' 
+                            AND property.approval_status != 'rejected'
+                            ORDER BY date DESC LIMIT 3");
                                     while($row=mysqli_fetch_array($query))
                                     {
                             ?>
                             <li> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                 <h6 class="text-secondary hover-text-success text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
-                                <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> <?php echo $row['14'];?></span>
+                                <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> <?php echo $row['10'];?></span>
                                 
                             </li>
                             <?php } ?>
@@ -219,13 +221,15 @@ include "map for details page/com.php";
                             <ul class="property_list_widget">
 							
 								<?php 
-								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 7");
+								$query=mysqli_query($con,"SELECT * FROM `property` where property.approval_status != 'pending'
+                                 AND property.approval_status != 'rejected'
+                                 ORDER BY date DESC LIMIT 7");
 										while($row=mysqli_fetch_array($query))
 										{
 								?>
                                 <li> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                     <h6 class="text-secondary hover-text-success text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
-                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> <?php echo $row['14'];?></span>
+                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> <?php echo $row['10'];?></span>
                                     
                                 </li>
                                 <?php } ?>
@@ -256,7 +260,7 @@ include "map for details page/com.php";
     xhr.open('GET', 'reservation-status.php?pid=' + propertyId);
     xhr.onload = function() {
         if (xhr.status === 200) {
-            // Update the reservation status text based on the response
+            // Update the reservation status using response response
             document.getElementById('reservationStatus').innerText = xhr.responseText;
         } else {
            

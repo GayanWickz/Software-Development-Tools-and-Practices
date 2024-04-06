@@ -34,7 +34,7 @@ include("config.php");
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 
-<title>Real Estate PHP</title>
+<title>NSBM CampusHomes</title>
 </head>
 <body>
 
@@ -54,7 +54,7 @@ include("config.php");
                         <div class="row">
 						
 							<?php 
-							$query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,
+							$query=mysqli_query($con,"SELECT property.*, user.uname,user.utype FROM `property`,
                              `user` WHERE property.uid=user.uid 
                             AND property.approval_status != 'pending' 
                             AND property.approval_status != 'rejected'");
@@ -67,7 +67,7 @@ include("config.php");
                                     <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                         
                                         <div class="sale bg-success text-white">For <?php echo $row['4'];?></div>
-                                        <div class="price text-primary text-capitalize">$<?php echo $row['8'];?> <span class="text-white"><?php echo $row['10'];?> Sqft</span></div>
+                                        <div class="price text-primary text-capitalize">RS.<?php echo $row['8'];?> <span class="text-white"><?php echo $row['10'];?> </span></div>
                                         
                                     </div>
                                     <div class="featured-thumb-data shadow-one">
@@ -127,7 +127,7 @@ include("config.php");
 								?>
                                 <li> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                     <h6 class="text-secondary hover-text-success text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
-                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> <?php echo $row['14'];?></span>
+                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> <?php echo $row['9'];?></span>
                                     
                                 </li>
                                 <?php } ?>

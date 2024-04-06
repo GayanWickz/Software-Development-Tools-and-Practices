@@ -8,7 +8,7 @@ include("config.php");
 
 // Dynamically generate image list based on database query
 $imageListHtml = '';
-$sql = "SELECT file_path FROM advertisements"; // Assuming 'advertisements' is the name of your table
+$sql = "SELECT file_path FROM advertisements"; 
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-lg-12">
-                            <h1 class="mb-4"><span class="topic-1">Leading You to </span>
+                    <h1 class="sg" style="font-size: 50px; color: #F3ECEC;"><span class="topic-1">Leading You to </span>
                             <span class="topic-1">Your Destination</span></h1>
                            
                         </div>
@@ -112,28 +112,28 @@ if ($result->num_rows > 0) {
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-rent text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Selling Service</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>we specialize in connecting buyers and sellers, making the process seamless and hassle-free...</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-for-rent text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Rental Service</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>Finding your ideal rental property has been easier with NsbmCampus_Homes...</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-list text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Property Listing</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>we have a diverse range of listings to suit every need and budget...</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-diagram text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Legal Investment</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>Whether you're a seasoned investor or new to the market, our platform offers a range of carefully vetted investment options...</p>
                             </div>
                         </div>
                     </div>
@@ -166,23 +166,14 @@ if ($result->num_rows > 0) {
                                         <div class="featured-thumb hover-zoomer mb-4">
                                             <div class="overlay-black overflow-hidden position-relative" style="width: 100%; height: 200;"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                                 <div class="featured bg-success text-white">New</div>
-                                                <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
-                                                <div class="price text-primary"><b>$<?php echo $row['13'];?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
+                                                <div class="sale bg-success text-white text-capitalize">For <?php echo $row['4'];?></div>
+                                                <div class="price text-primary"><b>Rs.<?php echo $row['8'];?> </b></div>
                                             </div>
                                             <div class="featured-thumb-data shadow-one">
                                                 <div class="p-3">
-                                                    <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['14'];?></span> </div>
-                                                <div class="bg-gray quantity px-4 pt-4">
-                                                    <ul>
-                                                        
-                                                        <li><span><?php echo $row['6'];?></span> Beds</li>
-                                                        <li><span><?php echo $row['7'];?></span> Baths</li>
-                                                        <li><span><?php echo $row['9'];?></span> Kitchen</li>
-                                                        <li><span><?php echo $row['8'];?></span> Balcony</li>
-                                                        
-                                                    </ul>
-                                                </div>
+                                                    <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['9'];?>"><?php echo $row['1'];?></a></h5>
+                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['10'];?></span> </div>
+                                                
                                                 <div class="p-4 d-inline-block w-100">
                                                     <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['uname'];?></div>
                                                     <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> <?php echo date('d-m-Y', strtotime($row['date']));?></div> 
@@ -239,7 +230,7 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
         </div>
-		<!--	why choose us -->
+		
 		
 	
         

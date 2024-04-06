@@ -322,7 +322,7 @@ if(isset($_POST['add']))
 
 
 
-		<?php include("include/footer.php");?>
+		
 		
         
         <!-- Scroll to top --> 
@@ -352,4 +352,5 @@ if(isset($_POST['add']))
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
 </body>
+<?php include("footer.php");?>
 </html>
