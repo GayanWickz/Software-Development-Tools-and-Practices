@@ -12,7 +12,7 @@
                             <li class="nav-item dropdown"> <a class="nav-link" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li>
                              <!--  <li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li> -->
                              <?php if(isset($_SESSION['uemail'])) { ?>
-                                <?php if($_SESSION['uemail'] == "wareden@123" && $_SESSION['upass'] == sha1("123")) { ?>
+                                <?php if($_SESSION['uemail'] == "wareden@123" && $_SESSION['upass'] == sha1("w@123")) { ?>
 
                                     <li class="nav-item"> <a class="nav-link" href="warden.php">Warden</a> </li>
                                 <?php }
@@ -33,7 +33,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="profile.php">Profile</a> </li>
+                                    
                                     <!-- <li class="nav-item"> <a class="nav-link" href="request.php">Property Request</a> </li> -->
                                     
                                     <?php if($_SESSION['utype'] != "student") { ?> <!-- Check if user is not registered as student -->

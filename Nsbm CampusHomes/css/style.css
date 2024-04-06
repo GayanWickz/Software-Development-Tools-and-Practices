@@ -445,7 +445,7 @@ body,
 .text-ordinary .jslider .jslider-label,
 .breadcrumb-item > a,
 .list-text-white a.dropdown-item {
-  color: var(--theme-ordinary-color);
+  color: rgb(20, 20, 20);
 }
 
 .text-primary,
@@ -802,6 +802,7 @@ h6,
 .h6 {
   font-family: var(--theme-highlight-font);
   font-weight: 700;
+  
 }
 h4,
 .h4 {
@@ -820,6 +821,7 @@ ol {
   padding: 0;
   margin: 0;
   list-style: none;
+  margin-left: 150px;
 }
 p {
   line-height: 28px;
@@ -1971,7 +1973,7 @@ table th {
   margin-bottom: 30px;
 }
 .property_list_widget li img {
-  width: 80px;
+  width: 100px;
   height: auto;
   float: left;
   margin-right: 15px;
