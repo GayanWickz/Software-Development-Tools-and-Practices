@@ -47,7 +47,8 @@ if(isset($_REQUEST['login']))
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="images/favicon.ico">
 
-<!--	Fonts-->
+<!--	Fonts
+	========================================================-->
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 
@@ -63,7 +64,7 @@ if(isset($_REQUEST['login']))
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/login.css">
 
-<title>Real Estate PHP</title>
+<title>NSBM CampusHomes</title>
 </head>
 <body>
 
@@ -112,11 +113,11 @@ if(isset($_REQUEST['login']))
                 </div>
             </div>
         </div>
-	
+	<!--	login  -->
         
         
     
-		<?php include("footer.php");?>
+		
 		
         
         
@@ -142,4 +143,5 @@ if(isset($_REQUEST['login']))
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
 </body>
+<?php include("footer.php");?>
 </html>

@@ -3,7 +3,21 @@ ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-								
+		
+
+
+// Dynamically generate image list based on database query
+$imageListHtml = '';
+$sql = "SELECT file_path FROM advertisements"; 
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $filePath = $row["file_path"];
+        $imageListHtml .= '<img class="image-item" src="' . $filePath . '" alt="' . basename($filePath) . '" />';
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +46,9 @@ include("config.php");
 <link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="advertisment-slider/style.css" />
+    <script src="advertisment-slider/script.js" defer></script>
 <title>NSBM CampusHomes</title>
 </head>
 <body>
@@ -44,15 +60,40 @@ include("config.php");
         
 		<?php include("include/header.php");?>
       
-	
+
         <div class="overlay-black w-100 slider-banner1 position-relative" style="background-image: url('images/R.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-lg-12">
-                            <h1 class="mb-4"><span class="topic-1">Leading You to </span>
+                    <h1 class="sg" style="font-size: 50px; color: #F3ECEC;"><span class="topic-1">Leading You to </span>
                             <span class="topic-1">Your Destination</span></h1>
                            
                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+          
+	
+        <div class="containerx">
+       
+                <!-- Image slider -->
+                <div class="slider-wrapper">
+                    <button id="prev-slide" class="slide-button material-symbols-rounded">
+                        chevron_left
+                    </button>
+                    <ul class="image-list">
+                        <!-- Dynamically generated image list -->
+                        <?php echo $imageListHtml; ?>
+                    </ul>
+                    <button id="next-slide" class="slide-button material-symbols-rounded">
+                        chevron_right
+                    </button>
+                </div>
+                <div class="slider-scrollbar">
+                    <div class="scrollbar-track">
+                        <div class="scrollbar-thumb"></div>
                     </div>
                 </div>
             </div>
@@ -71,28 +112,28 @@ include("config.php");
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-rent text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Selling Service</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>we specialize in connecting buyers and sellers, making the process seamless and hassle-free...</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-for-rent text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Rental Service</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>Finding your ideal rental property has been easier with NsbmCampus_Homes...</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-list text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Property Listing</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>we have a diverse range of listings to suit every need and budget...</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-diagram text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Legal Investment</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>Whether you're a seasoned investor or new to the market, our platform offers a range of carefully vetted investment options...</p>
                             </div>
                         </div>
                     </div>
@@ -114,32 +155,25 @@ include("config.php");
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                                 <div class="row">
 								
-									<?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
+									<?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype FROM `property`,`user` WHERE property.uid=user.uid 
+                                    AND property.approval_status != 'pending' AND property.approval_status != 'rejected'
+                                    ORDER BY date DESC LIMIT 9");
 										while($row=mysqli_fetch_array($query))
 										{
 									?>
 								
                                     <div class="col-md-6 col-lg-4">
                                         <div class="featured-thumb hover-zoomer mb-4">
-                                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
+                                            <div class="overlay-black overflow-hidden position-relative" style="width: 100%; height: 200;"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                                 <div class="featured bg-success text-white">New</div>
-                                                <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
-                                                <div class="price text-primary"><b>$<?php echo $row['13'];?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
+                                                <div class="sale bg-success text-white text-capitalize">For <?php echo $row['4'];?></div>
+                                                <div class="price text-primary"><b>Rs.<?php echo $row['8'];?> </b></div>
                                             </div>
                                             <div class="featured-thumb-data shadow-one">
                                                 <div class="p-3">
-                                                    <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['14'];?></span> </div>
-                                                <div class="bg-gray quantity px-4 pt-4">
-                                                    <ul>
-                                                        
-                                                        <li><span><?php echo $row['6'];?></span> Beds</li>
-                                                        <li><span><?php echo $row['7'];?></span> Baths</li>
-                                                        <li><span><?php echo $row['9'];?></span> Kitchen</li>
-                                                        <li><span><?php echo $row['8'];?></span> Balcony</li>
-                                                        
-                                                    </ul>
-                                                </div>
+                                                    <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['9'];?>"><?php echo $row['1'];?></a></h5>
+                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['10'];?></span> </div>
+                                                
                                                 <div class="p-4 d-inline-block w-100">
                                                     <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['uname'];?></div>
                                                     <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> <?php echo date('d-m-Y', strtotime($row['date']));?></div> 
@@ -196,7 +230,7 @@ include("config.php");
                 </div>
             </div>
         </div>
-		<!--	why choose us -->
+		
 		
 	
         
@@ -213,8 +247,9 @@ include("config.php");
 </div>
 
 
-<?php include("//footer.php");?>
-<!--	Js Link> 
+
+<!--	Js Link
+============================================================--> 
 <script src="js/jquery.min.js"></script> 
 
 <!--jQuery Layer Slider --> 
@@ -248,6 +283,15 @@ include("config.php");
 
 <script src="js/custom.js"></script>
 
+
+
+<script>
+        // Initialize slider after content is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            initSlider();
+        });
+    </script>
+<?php include("footer.php");?>
 </body>
 
 </html>

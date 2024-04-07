@@ -186,7 +186,7 @@ if(isset($_POST['add']))
             <div class="container">
                     <div class="row">
 						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">Add Your Land</h2>
+							<h2 class="text-secondary double-down-line text-center">Add Your Property</h2>
                         </div>
 					</div>
                     <div class="row p-5 bg-white">
@@ -406,8 +406,7 @@ if(isset($_POST['add']))
 	
         
         
-        <!--	Footer -->
-		<?php include("include/footer.php");?>
+      
 		
         <!-- Scroll to top --> 
         <a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a> 

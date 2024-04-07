@@ -33,6 +33,8 @@
     box-sizing: border-box
 }
 
+
+
 html {
     font-family: sans-serif;
     line-height: 1.15;
@@ -339,7 +341,7 @@ template {
 }
 
 .h4,h4 {
-    font-size: 1.5rem
+    font-size: 2.5rem
 }
 
 .h5,h5 {
