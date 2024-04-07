@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
                     <button id="prev-slide" class="slide-button material-symbols-rounded">
                         chevron_left
                     </button>
-                    <ul class="image-list">
+                    <ul class="image-list" >
                         <!-- Dynamically generated image list -->
                         <?php echo $imageListHtml; ?>
                     </ul>
@@ -207,21 +207,21 @@ if ($result->num_rows > 0) {
 									<i class="flaticon-reward flat-medium float-left d-table mr-4 text-success" aria-hidden="true"></i>
 									<div class="pl-2">
 										<h5 class="mb-3">Top Rated</h5>
-										<p>This is a dummy text for filling out spaces. This is just a dummy text for filling out blank spaces.</p>
+										<p>    Top Rated: We pride ourselves on being a top-rated choice in the industry, trusted by countless satisfied clients.</p>
 									</div>
                                 </li>
                                 <li class="mb-4 text-white d-flex"> 
 									<i class="flaticon-real-estate flat-medium float-left d-table mr-4 text-success" aria-hidden="true"></i>
 									<div class="pl-2">
 										<h5 class="mb-3">Experience Quality</h5>
-										<p>This is a dummy text for filling out spaces. This is just a dummy text for filling out blank spaces.</p>
+										<p>    Experience Quality: Experience unparalleled quality with our exceptional services tailored to meet your every need.</p>
 									</div>
                                 </li>
                                 <li class="mb-4 text-white d-flex"> 
 									<i class="flaticon-seller flat-medium float-left d-table mr-4 text-success" aria-hidden="true"></i>
 									<div class="pl-2">
 										<h5 class="mb-3">Experienced Agents</h5>
-										<p>This is a dummy text for filling out spaces. This is just a dummy text for filling out blank spaces.</p>
+										<p> Experienced Agents: Our team of seasoned agents brings years of expertise and a deep understanding of the market to ensure your property needs are met with precision and care</p>
 									</div>
                                 </li>
                             </ul>

@@ -68,9 +68,9 @@
   }
   
   .slider-wrapper .image-list .image-item {
-    width: 325px;
-    height: 400px;
-    object-fit: cover;
+    width: 300px;
+    height: 350px;
+   position: cover;
   }
   
   .container .slider-scrollbar {
@@ -133,7 +133,7 @@
     }
   
     .slider-wrapper .image-list .image-item {
-      width: 280px;
+      
       height: 380px;
     }
   

@@ -15,13 +15,13 @@
             <div class="box">
                 <h3>Quick Links</h3>
                 <a href="index.jsp" class="links"><i class="fas fa-arrow-right"></i>Home</a>
-                <a href="Vegetables.jsp" class="links"><i class="fas fa-arrow-right"></i>Shop</a>
+                <a href="property.php" class="links"><i class="fas fa-arrow-right"></i>Properties</a>
                 <a href="About_1.jsp" class="links"><i class="fas fa-arrow-right"></i>About</a>
                 <a href="show_review.jsp" class="links"><i class="fas fa-arrow-right"></i>Review</a>
             </div>
     
             <div class="box">
-                <h3>Green Mart</h3>
+                <h3> Nsbm_CampusHomes</h3>
                 <p>Connect with us</p>
                 <div class="share">
                     <a href="#" class="fab fa-facebook"></a>
@@ -49,7 +49,7 @@
             </div>
         </div>
     
-        <div class="credit"> Created by <span>Group A31: Plymouth 11</span>  | all rights reserved </div>
+        <div class="credit"> Created by <span>Group (R): Plymouth 11</span>  | all rights reserved </div>
     
     </section>
     
